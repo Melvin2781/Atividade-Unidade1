@@ -4,7 +4,7 @@
 import Data.Char (toLower)
 
 -- Função para normalizar o input
-normalizar :: Char -> Char // recebe um caractere
+normalizar :: Char -> Char -- recebe um caractere
 normalizar c
     -- A com acento.
     | c `elem` "ÁÀÂÃÄáàâãä" = 'a'
@@ -27,12 +27,12 @@ normalizar c
 -- Função para realizar a substituição em um caractere normalizado.
 cifra :: [Char] -> Char -> Char -- Recebe a chave e um caractere.
 cifra chave c
-    | c >= 'a' && c <= 'z' = head [y| (x, y) <- zip ['a', 'b'.. 'z'] chave, c == x]
-    | otherwise = c
+    | c >= 'a' && c <= 'z' = head [y| (x, y) <- zip ['a', 'b'.. 'z'] chave, c == x] 
+    | otherwise = c 
 
 -- Função de criptografia em String.
 monoAlphaCipherE :: [Char] -> String -> String -- Recebe a chave e uma string
-monoAlphaCipherE chave xs = [cifra chave (normalizar(x))| x <- xs]
+monoAlphaCipherE chave xs = [cifra chave (normalizar x)| x <- xs]
 
 -- Função para realizar a substituição contrária em um único caractere.
 cifraCont :: [Char] -> Char -> Char -- Recebe a chave e um caractere
@@ -47,13 +47,17 @@ descriptografar chave xs = [cifraCont chave x| x <- xs]
 -- Exemplos:
 
 -- Exemplo1 - criptografia:
+exemplo1 :: String
 exemplo1 = monoAlphaCipherE ['Z', 'Y', 'N', 'G', 'W', 'Q', 'A', 'M', 'X', 'P', 'K', 'V', 'U', 'L', 'C', 'E', 'F', 'R', 'I', 'B', 'S', 'J', 'D', 'O', 'T', 'H'] "OLA"
 
 -- Exemplo2 - descriptografia:
+exemplo2 :: String
 exemplo2 = descriptografar ['Z', 'Y', 'N', 'G', 'W', 'Q', 'A', 'M', 'X', 'P', 'K', 'V', 'U', 'L', 'C', 'E', 'F', 'R', 'I', 'B', 'S', 'J', 'D', 'O', 'T', 'H'] "CVZ"
 
 -- Exemplo3 - Exemplo no pdf:
+exemplo3 :: String
 exemplo3 = monoAlphaCipherE ['Z', 'Y', 'N', 'G', 'W', 'Q', 'A', 'M', 'X', 'P', 'K', 'V', 'U', 'L', 'C', 'E', 'F', 'R', 'I', 'B', 'S', 'J', 'D', 'O', 'T', 'H'] "criptografia monoalfabetica"
 
 -- Exemplo4 - Exemplo no pdf:
+exemplo4 :: String
 exemplo4 = descriptografar ['Z', 'Y', 'N', 'G', 'W', 'Q', 'A', 'M', 'X', 'P', 'K', 'V', 'U', 'L', 'C', 'E', 'F', 'R', 'I', 'B', 'S', 'J', 'D', 'O', 'T', 'H'] "NRXEBCARZQXZ UCLCZVQZYWBXNZ"
