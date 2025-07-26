@@ -1,3 +1,6 @@
+-- Programa finalizado em 26/07/2025
+-- Programa criado por Kevin Gabriel Morais Mangueira
+
 import Data.Char (toLower)
 
 -- Função para normalizar o input
