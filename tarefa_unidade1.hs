@@ -31,17 +31,17 @@ cifra chave c
     | otherwise = c
 
 -- Função de criptografia em String.
-monoAlphaCipherE :: [Char] -> String -> String // Recebe a chave e uma string
+monoAlphaCipherE :: [Char] -> String -> String -- Recebe a chave e uma string
 monoAlphaCipherE chave xs = [cifra chave (normalizar(x))| x <- xs]
 
 -- Função para realizar a substituição contrária em um único caractere.
-cifraCont :: [Char] -> Char -> Char // Recebe a chave e um caractere
+cifraCont :: [Char] -> Char -> Char -- Recebe a chave e um caractere
 cifraCont chave c
     | c >= 'A' && c <= 'Z' = head [y| (x, y) <- zip chave ['a', 'b' .. 'z'], x == c]
     | otherwise = c
 
 -- Função para descriptografar a string.
-descriptografar :: [Char] -> String -> String // Recebe a chave e uma string
+descriptografar :: [Char] -> String -> String -- Recebe a chave e uma string
 descriptografar chave xs = [cifraCont chave x| x <- xs]
 
 -- Exemplos:
